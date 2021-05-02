@@ -1,6 +1,6 @@
 import React from "react";
 
-function List({ data, removeItem }) {
+function List({ data, removeItem, editItem }) {
   return (
     <section className="list">
       {data.map((item) => {
@@ -9,7 +9,9 @@ function List({ data, removeItem }) {
           <article key={id} className="list-item">
             <p>{label}</p>
             <div className="btn-container">
-              <button className="edit-btn">edit</button>
+              <button className="edit-btn" onClick={() => editItem(id)}>
+                edit
+              </button>
               <button className="remove-btn" onClick={() => removeItem(id)}>
                 remove
               </button>
