@@ -3,6 +3,7 @@ import List from "./List";
 function App() {
   const [name, setName] = useState("");
   const [list, setList] = useState([]);
+  //add items
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name) {
@@ -14,6 +15,10 @@ function App() {
       });
       setName("");
     }
+  };
+  //remove items
+  const removeItem = (id) => {
+    setList((oldList) => oldList.filter((item) => item.id !== id));
   };
   return (
     <section className="section-center">
@@ -33,7 +38,7 @@ function App() {
           </button>
         </div>
       </form>
-      <List data={list} />
+      <List data={list} removeItem={removeItem} />
     </section>
   );
 }

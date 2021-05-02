@@ -63,7 +63,37 @@ body {
   flex: 0 0 5rem;
   text-transform: capitalize;
   cursor: pointer;
-  background-color: rgba(99, 158, 218, 0.37);
+  background-color: rgba(54, 119, 16, 0.37);
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.list-item {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.list-item p {
+  text-transform: capitalize;
+  padding: 0.25rem;
+  flex: 1 0 auto;
+}
+
+.btn-container button {
+  padding: 0.25rem;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: rgba(115, 243, 10, 0.212);
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.remove-btn {
+  background-color: rgba(221, 50, 20, 0.37);
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
