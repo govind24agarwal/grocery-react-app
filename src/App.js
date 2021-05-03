@@ -40,7 +40,13 @@ function App() {
       setName("");
     }
   };
-  //remove items
+  //remove all items
+  const clearList = () => {
+    setList([]);
+    showAlert(true, "danger", "list cleared");
+  };
+
+  //remove items per item
   const removeItem = (id) => {
     setList((oldList) => oldList.filter((item) => item.id !== id));
     showAlert(true, "danger", "item removed");
@@ -83,6 +89,13 @@ function App() {
         </div>
       </form>
       <List data={list} removeItem={removeItem} editItem={editItem} />
+      {list.length > 0 && (
+        <div className="btn-container">
+          <button className="btn clr-btn" onClick={clearList}>
+            clear list
+          </button>
+        </div>
+      )}
     </section>
   );
 }

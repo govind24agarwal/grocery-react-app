@@ -110,3 +110,20 @@ body {
 .danger {
   color: rgb(160, 34, 34);
 }
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  padding: 0.25rem;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  cursor: pointer;
+  background-color: rgba(163, 145, 142, 0.37);
+  border-radius: 0.25rem;
+}
+
+.clr-btn {
+  margin-top: 2rem;
+}
