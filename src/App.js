@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import List from "./List";
+import Alert from "./Alert";
+
 function App() {
   const [name, setName] = useState("");
   const [list, setList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
+  const [alert, setAlert] = useState({ show: false, type: "", msg: "" });
   //add items
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name) {
-      //code here
+      showAlert(true, "danger", "please enter name of your grocery to enter");
     } else if (isEditing) {
       setList((oldList) =>
         list.map((item) => {
@@ -18,6 +21,7 @@ function App() {
           return item;
         })
       );
+      showAlert(true, "success", "Item editted");
       setName("");
       setEditId(null);
       setIsEditing(false);
@@ -26,12 +30,14 @@ function App() {
       setList((oldList) => {
         return [...oldList, newItem];
       });
+      showAlert(true, "success", "item added");
       setName("");
     }
   };
   //remove items
   const removeItem = (id) => {
     setList((oldList) => oldList.filter((item) => item.id !== id));
+    showAlert(true, "danger", "item removed");
   };
 
   //edit item
@@ -41,8 +47,14 @@ function App() {
     setEditId(id);
     setName(ourItem.label);
   };
+
+  //show alert
+  const showAlert = (show = false, type = "", msg = "") => {
+    setAlert({ show, type, msg });
+  };
   return (
     <section className="section-center">
+      {alert.show && <Alert alert={alert} showAlert={showAlert} list={list} />}
       <form className="grocery-form" onSubmit={handleSubmit}>
         <h3>Grocery list</h3>
         <div className="form-control">
